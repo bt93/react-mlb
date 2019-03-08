@@ -24,7 +24,7 @@ class App extends Component {
             <Route exact path='/' render={(props) => <Header {...props} logo={logo} />} />
 
             <Route exact path="/" render={(props) => <Gamelist {...props} ball={ball} />} />
-            <Route exact path='/game/:id' render={(props) => <Displaygame {...props} ball={ball} />} />
+            <Route exact path='/game/:id' render={(props) => <Displaygame {...props} ball={ball} /> } />
           </div>
       </Router>
       </div>

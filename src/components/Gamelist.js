@@ -48,7 +48,7 @@ class Gamelist extends React.Component {
 				headLine = <h2>Todays Games</h2>;
 				renderedData = this.state.gameList.dates[0].games.map(game => {
 				 	return (
-				 		<li key={game.gamePk}>
+				 		<li key={game.gamePk} className="game">
 				 			<h3>{game.description}</h3>
 				 			<p><img src={`https://www.mlbstatic.com/team-logos/${game.teams.away.team.id}.svg`} 
 				 			className="team-logo"
@@ -82,7 +82,7 @@ class Gamelist extends React.Component {
 		return (
 				<div>
 					{headLine}
-					<ul>
+					<ul className="game-list">
 						{renderedData}
 					</ul>
 					<p>All data and stats from <a href="https://statsapi.mlb.com/" target="_blank" rel="noopener noreferrer">https://statsapi.mlb.com/</a> 

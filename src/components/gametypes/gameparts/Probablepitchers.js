@@ -17,7 +17,7 @@ class Probablepitchers extends React.Component {
 			&player_id='${this.props.data.gameData.probablePitchers.away.id}'`)
 		.then(res => res.json())
 		.then(res => {
-			this.setState({awayStats: {stats: res, isLoading:false}})
+			this.setState({awayStats: {stats: res.sport_pitching_tm.queryResults.row, isLoading:false}})
 		});
 		}
 		if (this.props.data.gameData.probablePitchers.home) {
@@ -27,7 +27,7 @@ class Probablepitchers extends React.Component {
 			&player_id='${this.props.data.gameData.probablePitchers.home.id}'`)
 		.then(res => res.json())
 		.then(res => {
-			this.setState({homeStats: {stats: res, isLoading:false}})
+			this.setState({homeStats: {stats: res.sport_pitching_tm.queryResults.row, isLoading:false}})
 		});
 		}
 	}
@@ -41,13 +41,13 @@ class Probablepitchers extends React.Component {
 					<img src={`https://securea.mlb.com/mlb/images/players/head_shot/${this.props.data.gameData.probablePitchers.away.id}.jpg`} 
 					alt={this.props.data.gameData.probablePitchers.away.fullName}/>
 					<p>{this.props.data.gameData.teams.away.abbreviation} - {this.props.data.gameData.probablePitchers.away.fullName}</p>
-					{this.state.awayStats.stats.sport_pitching_tm.queryResults.row && 
+					{this.state.awayStats.stats && 
 					<ul>
-						<li>Record: ({this.state.awayStats.stats.sport_pitching_tm.queryResults.row.w} - {this.state.awayStats.stats.sport_pitching_tm.queryResults.row.l})</li>
-						<li>ERA: {this.state.awayStats.stats.sport_pitching_tm.queryResults.row.era}</li>
-						<li>Innings Pitched: {this.state.awayStats.stats.sport_pitching_tm.queryResults.row.ip}</li>
-						<li>Strike Outs: {this.state.awayStats.stats.sport_pitching_tm.queryResults.row.so}</li>
-						<li>WHIP: {this.state.awayStats.stats.sport_pitching_tm.queryResults.row.whip}</li>
+						<li>Record: ({this.state.awayStats.stats.w} - {this.state.awayStats.stats.l})</li>
+						<li>ERA: {this.state.awayStats.stats.era}</li>
+						<li>Innings Pitched: {this.state.awayStats.stats.ip}</li>
+						<li>Strike Outs: {this.state.awayStats.stats.so}</li>
+						<li>WHIP: {this.state.awayStats.stats.whip}</li>
 					</ul>
 					}
 				</div>
@@ -62,13 +62,13 @@ class Probablepitchers extends React.Component {
 					<img src={`https://securea.mlb.com/mlb/images/players/head_shot/${this.props.data.gameData.probablePitchers.home.id}.jpg`} 
 					alt={this.props.data.gameData.probablePitchers.home.fullName}/>
 					<p>{this.props.data.gameData.teams.home.abbreviation} - {this.props.data.gameData.probablePitchers.home.fullName}</p>
-					{this.state.homeStats.stats.sport_pitching_tm.queryResults.row && 
+					{this.state.homeStats.stats && 
 					<ul>
-						<li>Record: ({this.state.homeStats.stats.sport_pitching_tm.queryResults.row.w} - {this.state.homeStats.stats.sport_pitching_tm.queryResults.row.l})</li>
-						<li>ERA: {this.state.homeStats.stats.sport_pitching_tm.queryResults.row.era}</li>
-						<li>Innings Pitched: {this.state.homeStats.stats.sport_pitching_tm.queryResults.row.ip}</li>
-						<li>Strike Outs: {this.state.homeStats.stats.sport_pitching_tm.queryResults.row.so}</li>
-						<li>WHIP: {this.state.homeStats.stats.sport_pitching_tm.queryResults.row.whip}</li>	
+						<li>Record: ({this.state.homeStats.stats.w} - {this.state.homeStats.stats.l})</li>
+						<li>ERA: {this.state.homeStats.stats.era}</li>
+						<li>Innings Pitched: {this.state.homeStats.stats.ip}</li>
+						<li>Strike Outs: {this.state.homeStats.stats.so}</li>
+						<li>WHIP: {this.state.homeStats.stats.whip}</li>	
 					</ul>
 					}
 				</div>
@@ -80,8 +80,10 @@ class Probablepitchers extends React.Component {
 		return (
 			<div>
 				<h4>Probable Pitchers</h4>
-				{awayPitcher}
-				{homePitcher}
+				<div className="probable-pitchers">
+					{awayPitcher}
+					{homePitcher}
+				</div>
 			</div>
 			)
 	}

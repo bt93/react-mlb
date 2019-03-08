@@ -5,47 +5,50 @@ class Startinglineup extends React.Component {
 		super();
 		this.state = {
 			lineups: [],
-			isLoading: true,
-			awayStats: [],
-			homeStats: []
+			isLoading: true
 		}
 	}
 
 	componentWillMount() {
 		// for info
 		fetch(`https://statsapi.mlb.com/api/v1/schedule?
-			gamePk=${this.props.data.gamePk}&language=en&hydrate=lineups,&useLatestGames=true&fields=dates,games,note,id,dates,games,homeAway,isNational,dates,games,game,tickets,ticketType,ticketLinks,dates,games,lineups,homePlayers,awayPlayers,
+			gamePk=${this.props.data.gamePk}&language=en&hydrate=lineups,&useLatestGames=true&fields=dates,games,note,id,dates,games,homeAway,isNational,dates,games,game,dates,games,lineups,homePlayers,awayPlayers,
 			useName,lastName,primaryPosition,abbreviation`)
 			.then(res => res.json())
 			.then(res => {
 				this.setState({
-					lineups: res,
+					lineups: res.dates[0].games[0].lineups,
 					isLoading: false
 				});
-			})
+			});
 	}
 
 	render() {
 		let awayLineup;
 		let homeLineup;
-		if (!this.state.isLoading) {
-			awayLineup = this.state.lineups.dates[0].games[0].lineups.awayPlayers.map(batter => {
+		let awayNum = 1;
+		let homeNum = 1;
+		if (!this.state.isLoading && this.state.lineups) {
+			awayLineup = this.state.lineups.awayPlayers.map(batter => {
 				return (
 					<tr key={batter.id}>
-						<td>{batter.lastName}, {batter.useName}<b> {batter.primaryPosition.abbreviation}</b></td>
+						<td>{awayNum++} {batter.lastName}, {batter.useName}<b> {batter.primaryPosition.abbreviation}</b></td>
 					</tr>
 					)
 			});
-			homeLineup = this.state.lineups.dates[0].games[0].lineups.homePlayers.map(batter => {
+			homeLineup = this.state.lineups.homePlayers.map(batter => {
 				return (
 					<tr key={batter.id}>
-						<td>{batter.lastName}, {batter.useName}<b> {batter.primaryPosition.abbreviation}</b></td>
+						<td>{homeNum++} {batter.lastName}, {batter.useName}<b> {batter.primaryPosition.abbreviation}</b></td>
 					</tr>
 					)
 			});
+		} else {
+			awayLineup = <tr><td>Lineup not yet set</td></tr>
+			homeLineup = <tr><td>Lineup not yet set</td></tr>
 		}
 		return (
-			<div>
+			<div className="starting-lineup">
 				<table>
 					<thead>
 						<tr>

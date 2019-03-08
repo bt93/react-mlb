@@ -19,7 +19,7 @@ class Decisions extends React.Component {
 				&player_id='${this.props.data.liveData.decisions.winner.id}'`)
 			.then(res => res.json())
 			.then(res => {
-				this.setState({winStats: {stats: res, isLoading:false}})
+				this.setState({winStats: {stats: res.sport_pitching_tm.queryResults.row, isLoading:false}})
 			});
 			}
 			if (this.props.data.liveData.decisions.loser) {
@@ -29,7 +29,7 @@ class Decisions extends React.Component {
 				&player_id='${this.props.data.liveData.decisions.loser.id}'`)
 			.then(res => res.json())
 			.then(res => {
-				this.setState({lossStats: {stats: res, isLoading:false}})
+				this.setState({lossStats: {stats: res.sport_pitching_tm.queryResults.row, isLoading:false}})
 			});
 			}
 			if (this.props.data.liveData.decisions.save) {
@@ -39,7 +39,7 @@ class Decisions extends React.Component {
 				&player_id='${this.props.data.liveData.decisions.save.id}'`)
 			.then(res => res.json())
 			.then(res => {
-				this.setState({saveStats: {stats: res, isLoading:false}})
+				this.setState({saveStats: {stats: res.sport_pitching_tm.queryResults.row, isLoading:false}})
 			});
 			}
 		}
@@ -51,48 +51,50 @@ class Decisions extends React.Component {
 			renderedData = (
 				<div>
 					<h4>Decisions</h4>
-					{!this.state.winStats.isLoading && 
-					<div>
-						<img src={`https://securea.mlb.com/mlb/images/players/head_shot/${this.props.data.liveData.decisions.winner.id}.jpg`} 
-						alt={this.props.data.liveData.decisions.winner.fullName}/>
-						<p>Winner: {this.props.data.liveData.decisions.winner.fullName}</p>
-						<ul>
-							<li>Record: ({this.state.winStats.stats.sport_pitching_tm.queryResults.row.w} - {this.state.winStats.stats.sport_pitching_tm.queryResults.row.l})</li>
-							<li>ERA: {this.state.winStats.stats.sport_pitching_tm.queryResults.row.era}</li>
-							<li>Innings Pitched: {this.state.winStats.stats.sport_pitching_tm.queryResults.row.ip}</li>
-							<li>Strike Outs: {this.state.winStats.stats.sport_pitching_tm.queryResults.row.so}</li>
-							<li>WHIP: {this.state.winStats.stats.sport_pitching_tm.queryResults.row.whip}</li>	
-						</ul>
+						<div className="decisions">
+						{!this.state.winStats.isLoading && 
+						<div>
+							<img src={`https://securea.mlb.com/mlb/images/players/head_shot/${this.props.data.liveData.decisions.winner.id}.jpg`} 
+							alt={this.props.data.liveData.decisions.winner.fullName}/>
+							<p>Winner: {this.props.data.liveData.decisions.winner.fullName}</p>
+							<ul>
+								<li>Record: ({this.state.winStats.stats.w} - {this.state.winStats.stats.l})</li>
+								<li>ERA: {this.state.winStats.stats.era}</li>
+								<li>Innings Pitched: {this.state.winStats.stats.ip}</li>
+								<li>Strike Outs: {this.state.winStats.stats.so}</li>
+								<li>WHIP: {this.state.winStats.stats.whip}</li>	
+							</ul>
+						</div>
+						}
+						{!this.state.lossStats.isLoading && 
+						<div>
+							<img src={`https://securea.mlb.com/mlb/images/players/head_shot/${this.props.data.liveData.decisions.loser.id}.jpg`} 
+							alt={this.props.data.liveData.decisions.loser.fullName}/>
+							<p>Loser: {this.props.data.liveData.decisions.loser.fullName}</p>
+							<ul>
+								<li>Record: ({this.state.lossStats.stats.w} - {this.state.lossStats.stats.l})</li>
+								<li>ERA: {this.state.lossStats.stats.era}</li>
+								<li>Innings Pitched: {this.state.lossStats.stats.ip}</li>
+								<li>Strike Outs: {this.state.lossStats.stats.so}</li>
+								<li>WHIP: {this.state.lossStats.stats.whip}</li>	
+							</ul>
+						</div>
+						}
+						{this.props.data.liveData.decisions.save && !this.state.saveStats.isLoading &&
+						<div>
+							<img src={`https://securea.mlb.com/mlb/images/players/head_shot/${this.props.data.liveData.decisions.save.id}.jpg`} 
+							alt={this.props.data.liveData.decisions.save.fullName} />
+							<p>Save: {this.props.data.liveData.decisions.save.fullName}</p>
+							<ul>
+								<li>Saves: {this.state.saveStats.stats.sv}</li>
+								<li>ERA: {this.state.saveStats.stats.era}</li>
+								<li>Innings Pitched: {this.state.saveStats.ip}</li>
+								<li>Strike Outs: {this.state.saveStats.stats.so}</li>
+								<li>WHIP: {this.state.saveStats.stats.whip}</li>	
+							</ul>
+						</div>
+						}
 					</div>
-					}
-					{!this.state.lossStats.isLoading && 
-					<div>
-						<img src={`https://securea.mlb.com/mlb/images/players/head_shot/${this.props.data.liveData.decisions.loser.id}.jpg`} 
-						alt={this.props.data.liveData.decisions.loser.fullName}/>
-						<p>Loser: {this.props.data.liveData.decisions.loser.fullName}</p>
-						<ul>
-							<li>Record: ({this.state.lossStats.stats.sport_pitching_tm.queryResults.row.w} - {this.state.lossStats.stats.sport_pitching_tm.queryResults.row.l})</li>
-							<li>ERA: {this.state.lossStats.stats.sport_pitching_tm.queryResults.row.era}</li>
-							<li>Innings Pitched: {this.state.lossStats.stats.sport_pitching_tm.queryResults.row.ip}</li>
-							<li>Strike Outs: {this.state.lossStats.stats.sport_pitching_tm.queryResults.row.so}</li>
-							<li>WHIP: {this.state.lossStats.stats.sport_pitching_tm.queryResults.row.whip}</li>	
-						</ul>
-					</div>
-					}
-					{this.props.data.liveData.decisions.save && !this.state.saveStats.isLoading &&
-					<div>
-						<img src={`https://securea.mlb.com/mlb/images/players/head_shot/${this.props.data.liveData.decisions.save.id}.jpg`} 
-						alt={this.props.data.liveData.decisions.save.fullName}/>
-						<p>Save: {this.props.data.liveData.decisions.save.fullName}</p>
-						<ul>
-							<li>Saves: {this.state.saveStats.stats.sport_pitching_tm.queryResults.row.sv}</li>
-							<li>ERA: {this.state.saveStats.stats.sport_pitching_tm.queryResults.row.era}</li>
-							<li>Innings Pitched: {this.state.saveStats.stats.sport_pitching_tm.queryResults.row.ip}</li>
-							<li>Strike Outs: {this.state.saveStats.stats.sport_pitching_tm.queryResults.row.so}</li>
-							<li>WHIP: {this.state.saveStats.stats.sport_pitching_tm.queryResults.row.whip}</li>	
-						</ul>
-					</div>
-					}
 				</div>
 				)
 		} else {

@@ -30,6 +30,24 @@
   width: 50%;
 }
 
+.probable-pitchers,
+.decisions,
+.current-play,
+.starting-lineup {
+  display: flex;
+  justify-content: center;
+}
+
+.game-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 13vw;
+}
+
+.game {
+  padding: 5%;
+}
+
 ul {
   list-style-type: none;
 }
