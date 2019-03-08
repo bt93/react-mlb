@@ -33,7 +33,7 @@ function Linescore(props) {
 				 			/>  </td>
 						<td key="0">{props.data.gameData.teams.away.abbreviation}</td>
 						{awayLine}
-						<td key="20">{props.data.liveData.linescore.teams.away.runs}</td>
+						<td key="20"><b>{props.data.liveData.linescore.teams.away.runs}</b></td>
 						<td key="21">{props.data.liveData.linescore.teams.away.hits}</td>
 						<td key="22">{props.data.liveData.linescore.teams.away.errors}</td>
 					</tr>
@@ -44,7 +44,7 @@ function Linescore(props) {
 				 			/> </td>
 						<td key="0">{props.data.gameData.teams.home.abbreviation}</td>
 						{homeLine}
-						<td key="20">{props.data.liveData.linescore.teams.home.runs}</td>
+						<td key="20"><b>{props.data.liveData.linescore.teams.home.runs}</b></td>
 						<td key="21">{props.data.liveData.linescore.teams.home.hits}</td>
 						<td key="22">{props.data.liveData.linescore.teams.home.errors}</td>
 					</tr>

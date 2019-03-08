@@ -79,7 +79,7 @@ class Decisions extends React.Component {
 						</ul>
 					</div>
 					}
-					{this.props.data.liveData.decisions.save &&
+					{this.props.data.liveData.decisions.save && !this.state.saveStats.isLoading &&
 					<div>
 						<img src={`https://securea.mlb.com/mlb/images/players/head_shot/${this.props.data.liveData.decisions.save.id}.jpg`} 
 						alt={this.props.data.liveData.decisions.save.fullName}/>
@@ -91,7 +91,8 @@ class Decisions extends React.Component {
 							<li>Strike Outs: {this.state.saveStats.stats.sport_pitching_tm.queryResults.row.so}</li>
 							<li>WHIP: {this.state.saveStats.stats.sport_pitching_tm.queryResults.row.whip}</li>	
 						</ul>
-					</div>}
+					</div>
+					}
 				</div>
 				)
 		} else {
