@@ -49,6 +49,9 @@ class Gamelist extends React.Component {
 				renderedData = this.state.gameList.dates[0].games.map(game => {
 				 	return (
 				 		<li key={game.gamePk} className="game">
+				 			{game.doubleHeader === 'Y' &&
+				 			<p>Game #{game.gameNumber} of doubleheader</p>
+				 			}
 				 			<h3>{game.description}</h3>
 				 			<p><img src={`https://www.mlbstatic.com/team-logos/${game.teams.away.team.id}.svg`} 
 				 			className="team-logo"
@@ -59,7 +62,8 @@ class Gamelist extends React.Component {
 				 			alt={game.teams.home.team.name}
 				 			/>  {game.teams.home.team.name} <b>{game.teams.home.score}</b> | ({game.teams.home.leagueRecord.wins} - {game.teams.home.leagueRecord.losses})</p>
 					 			<div>
-						 			<Link to={`/game/${game.gamePk}`}>{game.status.statusCode === 'F' && <small>Final</small>}
+						 			<Link to={`/game/${game.gamePk}`}>
+						 			{game.status.statusCode === 'F' && <small>Final</small>}
 						 			{game.status.statusCode === 'O' && <small>Final</small>}
 						 			{game.status.statusCode === 'FT' && <small>Final</small>}
 						 			{game.status.statusCode === 'I' && <small>Live</small>}
