@@ -29,20 +29,28 @@ class Startinglineup extends React.Component {
 		let awayNum = 1;
 		let homeNum = 1;
 		if (!this.state.isLoading && this.state.lineups) {
-			awayLineup = this.state.lineups.awayPlayers.map(batter => {
+			if (this.state.lineups.awayPlayers) {
+				awayLineup = this.state.lineups.awayPlayers.map(batter => {
 				return (
 					<tr key={batter.id}>
 						<td>{awayNum++} {batter.lastName}, {batter.useName}<b> {batter.primaryPosition.abbreviation}</b></td>
 					</tr>
 					)
-			});
-			homeLineup = this.state.lineups.homePlayers.map(batter => {
+				});
+			} else {
+				awayLineup = <tr><td>Lineup not yet set</td></tr>
+			}
+			if (this.state.lineups.homePlayers) {
+				homeLineup = this.state.lineups.homePlayers.map(batter => {
 				return (
 					<tr key={batter.id}>
 						<td>{homeNum++} {batter.lastName}, {batter.useName}<b> {batter.primaryPosition.abbreviation}</b></td>
 					</tr>
 					)
-			});
+				});
+			} else {
+				homeLineup = <tr><td>Lineup not yet set</td></tr>
+			}
 		} else {
 			awayLineup = <tr><td>Lineup not yet set</td></tr>
 			homeLineup = <tr><td>Lineup not yet set</td></tr>
