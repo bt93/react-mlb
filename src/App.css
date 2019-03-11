@@ -6,6 +6,7 @@
   animation: ball-spin infinite 20s linear;
   height: 30vmin;
   pointer-events: none;
+  margin-bottom: 10vmin;
 }
 
 .App-header {

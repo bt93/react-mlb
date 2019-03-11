@@ -2,6 +2,9 @@ import React from 'react';
 // eslint-disable-next-line 
 import Displaygame from './Displaygame';
 import { Link } from 'react-router-dom';
+import DatePicker from "react-datepicker";
+ 
+import "react-datepicker/dist/react-datepicker.css";
 
 class Gamelist extends React.Component {
 	constructor() {
@@ -10,8 +13,10 @@ class Gamelist extends React.Component {
 			error: null,
 			gameList: [],
 			isLoading: true,
-			intervalId: null
+			intervalId: null,
+			startDate: new Date()
 		}
+		this.handleChange = this.handleChange.bind(this);
 	}
 
 	componentDidMount() {
@@ -40,6 +45,28 @@ class Gamelist extends React.Component {
 		clearInterval(this.state.intervalId);
 	}
 
+	handleChange(date) {
+		this.setState({
+			startDate: date
+		});
+		this.changeDate(date)
+	}
+
+	changeDate(date) {
+		let month = date.getMonth() + 1;
+		let day = date.getDate();
+		let year = date.getFullYear();
+		fetch(`https://statsapi.mlb.com/api/v1/schedule/?sportId=1
+			&date=${month}/${day}/${year}`)
+		.then(res => res.json())
+		.then(res => {
+			this.setState({
+				gameList: res
+			})
+		})
+	}
+
+
 	render() {
 		let renderedData;
 		let headLine;
@@ -52,7 +79,7 @@ class Gamelist extends React.Component {
 				 			{game.doubleHeader === 'Y' &&
 				 			<p>Game #{game.gameNumber} of doubleheader</p>
 				 			}
-				 			<h3>{game.description}</h3>
+				 			{game.description && <h3>{game.description}</h3>}
 				 			<p><img src={`https://www.mlbstatic.com/team-logos/${game.teams.away.team.id}.svg`} 
 				 			className="team-logo"
 				 			alt={game.teams.away.team.name}
@@ -78,14 +105,23 @@ class Gamelist extends React.Component {
 				headLine = <h2>There are no games today</h2>
 			}
 		} else {
-			renderedData = <img src={this.props.ball} alt="ball" className="ball" />
+			headLine = <img src={this.props.ball} alt="ball" className="ball" />
 		}
-
+		// Get year for copyright
 		let date = new Date();
 		let year = date.getFullYear();
 		return (
 				<div>
 					{headLine}
+					<DatePicker 
+					todayButton={"Today"}
+					selected={this.state.startDate}
+					onChange={this.handleChange}
+					showYearDropdown
+            		dateFormatCalendar="MMMM"
+            		scrollableYearDropdown
+            		yearDropdownItemNumber={15}
+					/>
 					<ul className="game-list">
 						{renderedData}
 					</ul>
