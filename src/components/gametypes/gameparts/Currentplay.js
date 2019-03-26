@@ -23,6 +23,13 @@ function Currentplay(props) {
 				 Balls: {props.data.liveData.plays.currentPlay.count.balls} |
 				  Strikes: {props.data.liveData.plays.currentPlay.count.strikes}</p>
 			</div>
+			<div className="basses-container">
+				<ul>
+					<li className="base first"></li>
+					<li className="base second"></li>
+					<li className="base third"></li>
+				</ul>
+			</div>
 		</div>
 		)
 }

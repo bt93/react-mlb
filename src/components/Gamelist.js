@@ -90,13 +90,15 @@ class Gamelist extends React.Component {
 				 			/>  {game.teams.home.team.name} <b>{game.teams.home.score}</b> | ({game.teams.home.leagueRecord.wins} - {game.teams.home.leagueRecord.losses})</p>
 					 			<div>
 						 			<Link to={`/game/${game.gamePk}`}>
-						 			{game.status.statusCode === 'F' && <small>Final</small>}
-						 			{game.status.statusCode === 'O' && <small>Final</small>}
-						 			{game.status.statusCode === 'FT' && <small>Final</small>}
-						 			{game.status.statusCode === 'I' && <small>Live</small>}
-						 			{game.status.statusCode === 'P' && <small>Preview</small>}
-						 			{game.status.statusCode === 'S' && <small>Preview</small>}
-						 			{game.status.statusCode === 'PW' && <small>Preview</small>}</Link>
+							 			{game.status.statusCode === 'F' && <small>Final</small>}
+							 			{game.status.statusCode === 'O' && <small>Final</small>}
+							 			{game.status.statusCode === 'FT' && <small>Final</small>}
+							 			{game.status.statusCode === 'I' && <small>Live</small>}
+							 			{game.status.statusCode === 'P' && <small>Preview</small>}
+							 			{game.status.statusCode === 'S' && <small>Preview</small>}
+							 			{game.status.statusCode === 'PW' && <small>Preview</small>}
+						 			</Link>
+						 			{game.status.statusCode === 'CR' && <small>Canceled/Rain</small>}
 					 			</div>
 				 		</li>
 				 		)

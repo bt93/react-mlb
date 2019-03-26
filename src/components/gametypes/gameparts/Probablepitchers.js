@@ -38,7 +38,7 @@ class Probablepitchers extends React.Component {
 		if (this.props.data.gameData.probablePitchers.away && !this.state.awayStats.isLoading) {
 			awayPitcher = (
 				<div className="away-pitcher">
-					<img src={`https://securea.mlb.com/mlb/images/players/head_shot/${this.props.data.gameData.probablePitchers.away.id}.jpg`} 
+					<img src={`https://securea.mlb.com/images/players/525x330/alt/${this.props.data.gameData.probablePitchers.away.id}.jpg`} 
 					alt={this.props.data.gameData.probablePitchers.away.fullName}/>
 					<p>{this.props.data.gameData.teams.away.abbreviation} - {this.props.data.gameData.probablePitchers.away.fullName}</p>
 					{this.state.awayStats.stats && 
@@ -59,7 +59,7 @@ class Probablepitchers extends React.Component {
 		if (this.props.data.gameData.probablePitchers.home && !this.state.homeStats.isLoading) {
 			homePitcher = (
 				<div className="home-pitcher">
-					<img src={`https://securea.mlb.com/mlb/images/players/head_shot/${this.props.data.gameData.probablePitchers.home.id}.jpg`} 
+					<img src={`https://securea.mlb.com/images/players/525x330/alt/${this.props.data.gameData.probablePitchers.home.id}.jpg`} 
 					alt={this.props.data.gameData.probablePitchers.home.fullName}/>
 					<p>{this.props.data.gameData.teams.home.abbreviation} - {this.props.data.gameData.probablePitchers.home.fullName}</p>
 					{this.state.homeStats.stats && 

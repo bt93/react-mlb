@@ -75,44 +75,60 @@ class Stats extends React.Component {
 				)
 			});
 		}
+
+		let infoLen = this.props.data.liveData.boxscore.info.length;
+		let info = this.props.data.liveData.boxscore.info.map((info, index) => {
+			if (infoLen === index + 1) {
+				return <li key={index}>{info.label} {info.value}</li>
+			} else {
+				return <li key={index}>{info.label}: {info.value}</li>
+			}
+		})
 		return (
-			<div className="starting-lineup">
-				<table>
-					<thead>
-						<tr>
-							<th>{this.props.data.liveData.boxscore.teams.away.team.name}</th>
-							<th>AVG</th>
-							<th>R</th>
-							<th>H</th>
-							<th>RBI</th>
-							<th>BB</th>
-							<th>K</th>
-							<th>HR</th>
-							<th>AB</th>
-						</tr>
-					</thead>
-					<tbody>
-						{awayBattersStats}
-					</tbody>
-				</table>
-				<table>
-					<thead>
-						<tr>
-							<th>{this.props.data.liveData.boxscore.teams.home.team.name}</th>
-							<th>AVG</th>
-							<th>R</th>
-							<th>H</th>
-							<th>RBI</th>
-							<th>BB</th>
-							<th>K</th>
-							<th>HR</th>
-							<th>AB</th>
-						</tr>
-					</thead>
-					<tbody>
-						{homeBattersStats}
-					</tbody>
-				</table>
+			<div>
+				<div className="starting-lineup">
+					<table>
+						<thead>
+							<tr>
+								<th>{this.props.data.liveData.boxscore.teams.away.team.name}</th>
+								<th>AVG</th>
+								<th>R</th>
+								<th>H</th>
+								<th>RBI</th>
+								<th>BB</th>
+								<th>K</th>
+								<th>HR</th>
+								<th>AB</th>
+							</tr>
+						</thead>
+						<tbody>
+							{awayBattersStats}
+						</tbody>
+					</table>
+					<table>
+						<thead>
+							<tr>
+								<th>{this.props.data.liveData.boxscore.teams.home.team.name}</th>
+								<th>AVG</th>
+								<th>R</th>
+								<th>H</th>
+								<th>RBI</th>
+								<th>BB</th>
+								<th>K</th>
+								<th>HR</th>
+								<th>AB</th>
+							</tr>
+						</thead>
+						<tbody>
+							{homeBattersStats}
+						</tbody>
+					</table>
+				</div>
+				<div>
+					<ul>
+						{info}
+					</ul>
+				</div>
 			</div>
 			)
 	}
