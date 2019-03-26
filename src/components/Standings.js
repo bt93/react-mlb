@@ -25,7 +25,7 @@ class Standings extends React.Component {
 	}
 
 	render() {
-		let string = `${this.state.now.getMonth() + 1}/${this.state.now.getDate()}/${this.state.now.getFullYear()}`;
+		let date = `${this.state.now.getMonth() + 1}/${this.state.now.getDate()}/${this.state.now.getFullYear()}`;
 		let records;
 		if (!this.state.isLoading) {
 			records = this.state.standings.records.map(div => {
@@ -42,6 +42,15 @@ class Standings extends React.Component {
 										<th>PCT | </th>
 										<th>GB | </th>
 										<th>WCGB | </th>
+										<th>L10 | </th>
+										<th>STRK | </th>
+										<th>RS | </th>
+										<th>RA | </th>
+										<th>DIFF | </th>
+										<th>X-W/L | </th>
+										<th>HOME | </th>
+										<th>AWAY | </th>
+										<th>NEXT GAME</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -60,6 +69,15 @@ class Standings extends React.Component {
 												<td>{teamInfo.winningPercentage}</td>
 												<td>{teamInfo.gamesBack}</td>
 												<td>{teamInfo.wildCardGamesBack}</td>
+												<td>{teamInfo.records.splitRecords[4].wins}-{teamInfo.records.splitRecords[4].losses}</td>
+												<td>{teamInfo.streak !== undefined && teamInfo.streak.streakCode}</td>
+												<td>{teamInfo.runsScored}</td>
+												<td>{teamInfo.runsAllowed}</td>
+												<td>{teamInfo.runDifferential}</td>
+												<td>{teamInfo.records.expectedRecords !== undefined && teamInfo.records.expectedRecords[0].wins}-{teamInfo.records.expectedRecords !== undefined && teamInfo.records.expectedRecords[0].losses}</td>
+												<td>{teamInfo.records.splitRecords[0].wins}-{teamInfo.records.splitRecords[0].losses}</td>
+												<td>{teamInfo.records.splitRecords[1].wins}-{teamInfo.records.splitRecords[1].losses}</td>
+												<td><Link to={`/game/${teamInfo.team.nextGameSchedule.dates[0].games[0].gamePk}`}>{teamInfo.team.nextGameSchedule.dates[0].date}</Link></td>
 											</tr>
 											)
 									})}
@@ -70,6 +88,8 @@ class Standings extends React.Component {
 				}
 				return renderedData
 			})
+		} else {
+			records = <img src={this.props.ball} alt="ball" className="ball" />
 		}
 
 		return (
@@ -77,10 +97,11 @@ class Standings extends React.Component {
 				<nav>
 					<Link to="/">Home</Link>
 				</nav>
-				<h1>Stadings as of {string}</h1>
+				<h1>Standings</h1>
 				<div>
 					{records}
 				</div>
+				<small>Records as of {date}</small>
 			</div>
 			)
 	}

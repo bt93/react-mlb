@@ -72,7 +72,18 @@ class Gamelist extends React.Component {
 		let headLine;
 		if (!this.state.isLoading) {
 			if (this.state.gameList.totalGames > 0) {
-				headLine = <h2>Todays Games</h2>;
+				headLine = <div>
+								<h2>Todays Games</h2>
+								<DatePicker 
+								todayButton={"Today"}
+								selected={this.state.startDate}
+								onChange={this.handleChange}
+								showYearDropdown
+			            		dateFormatCalendar="MMMM"
+			            		scrollableYearDropdown
+			            		yearDropdownItemNumber={15}
+								/>
+							</div>
 				renderedData = this.state.gameList.dates[0].games.map(game => {
 				 	return (
 				 		<li key={game.gamePk} className="game">
@@ -104,7 +115,18 @@ class Gamelist extends React.Component {
 				 		)
 				 });
 			} else {
-				headLine = <h2>There are no games today</h2>
+				headLine = <div>
+								<h2>There are no games today</h2>
+								<DatePicker 
+								todayButton={"Today"}
+								selected={this.state.startDate}
+								onChange={this.handleChange}
+								showYearDropdown
+			            		dateFormatCalendar="MMMM"
+			            		scrollableYearDropdown
+			            		yearDropdownItemNumber={15}
+								/>
+							</div>
 			}
 		} else {
 			headLine = <img src={this.props.ball} alt="ball" className="ball" />
@@ -115,15 +137,6 @@ class Gamelist extends React.Component {
 		return (
 				<div>
 					{headLine}
-					<DatePicker 
-					todayButton={"Today"}
-					selected={this.state.startDate}
-					onChange={this.handleChange}
-					showYearDropdown
-            		dateFormatCalendar="MMMM"
-            		scrollableYearDropdown
-            		yearDropdownItemNumber={15}
-					/>
 					<ul className="game-list">
 						{renderedData}
 					</ul>

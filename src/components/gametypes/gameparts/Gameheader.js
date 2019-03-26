@@ -9,7 +9,7 @@ function Gameheader(props) {
 			<span> ({props.data.gameData.teams.home.record.wins} - {props.data.gameData.teams.home.record.losses})</span></h2>
 			<h3>{props.data.gameData.venue.name} | {props.data.gameData.venue.location.city}, {props.data.gameData.venue.location.state}
 			<span> | {props.data.gameData.datetime.time} {props.data.gameData.datetime.ampm} {props.data.gameData.venue.timeZone.tz}</span></h3>
-			<p>Weather: {props.data.gameData.weather.condition}, {props.data.gameData.weather.temp}&#176;F</p>
+			{props.data.gameData.weather.temp !== undefined && <p>Weather: {props.data.gameData.weather.condition}, {props.data.gameData.weather.temp}&#176;F</p>}
 		</div>
 		)
 }

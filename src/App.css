@@ -7,6 +7,7 @@
   height: 30vmin;
   pointer-events: none;
   margin-bottom: 10vmin;
+  border-radius: 50%;
 }
 
 .App-header {

@@ -7,7 +7,10 @@ import { Link } from 'react-router-dom';
 function Displaygame({ match }) {
 		return (
 			<div>
-				<Link to="/">Home</Link>
+				<nav>
+					<Link to="/">Home</Link>
+					<Link to="/standings">Standings</Link>
+				</nav>
 				<Gameinfo id={match.params.id}/>
 			</div>
 			)
