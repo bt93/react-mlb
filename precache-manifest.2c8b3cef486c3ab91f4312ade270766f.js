@@ -12,15 +12,15 @@ self.__precacheManifest = [
     "url": "/react-mlb/static/js/runtime~main.883c6233.js"
   },
   {
-    "revision": "ea09e1cf42e59ec0d8ce",
-    "url": "/react-mlb/static/js/main.ea09e1cf.chunk.js"
+    "revision": "7fa1ed662c57ab3bd0d7",
+    "url": "/react-mlb/static/js/main.7fa1ed66.chunk.js"
   },
   {
     "revision": "4e694bfd930880d9248d",
     "url": "/react-mlb/static/js/2.4e694bfd.chunk.js"
   },
   {
-    "revision": "ea09e1cf42e59ec0d8ce",
+    "revision": "7fa1ed662c57ab3bd0d7",
     "url": "/react-mlb/static/css/main.a14e8416.chunk.css"
   },
   {
@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "/react-mlb/static/css/2.bb3d1bb4.chunk.css"
   },
   {
-    "revision": "23fc7c8bf75d27269445f94449f00307",
+    "revision": "a029816f03d27041e0cf3c5468c51796",
     "url": "/react-mlb/index.html"
   }
 ];
