@@ -49,7 +49,7 @@ class Playerinfo extends React.Component {
 						<li>Nickname: {this.state.data.nickName}</li>
 						<li>Born: {this.state.data.birthDate} in {this.state.data.birthCity}
 						{this.state.data.birthStateProvince && <span>, {this.state.data.birthStateProvince}</span>}, {this.state.data.birthCountry}</li>
-						<li>Draft: {this.state.data.draftYear}</li>
+						{this.state.data.draftYear &&<li>Draft: {this.state.data.draftYear}</li>}
 						<li>Debut: {this.state.data.mlbDebutDate}</li>
 					</ul>
 				</div>

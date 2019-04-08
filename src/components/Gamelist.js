@@ -20,8 +20,13 @@ class Gamelist extends React.Component {
 	}
 
 	componentDidMount() {
+		let month = this.state.startDate.getMonth() + 1;
+		let day = this.state.startDate.getDate();
+		let year = this.state.startDate.getFullYear();
+		let date = `${month}/${day}/${year}`;
 		let fetchGames = () => {
-		fetch('https://statsapi.mlb.com/api/v1/schedule/?sportId=1')
+		fetch(`https://statsapi.mlb.com/api/v1/schedule/?sportId=1
+			&date=${date}`)
 		.then(res => res.json())
 		.then((res) => {
 			this.setState({
@@ -56,8 +61,10 @@ class Gamelist extends React.Component {
 		let month = date.getMonth() + 1;
 		let day = date.getDate();
 		let year = date.getFullYear();
+		let fullDate = `${month}/${day}/${year}`;
+		localStorage.setItem('date', fullDate);
 		fetch(`https://statsapi.mlb.com/api/v1/schedule/?sportId=1
-			&date=${month}/${day}/${year}`)
+			&date=${fullDate}`)
 		.then(res => res.json())
 		.then(res => {
 			this.setState({
