@@ -13,7 +13,7 @@ class Decisions extends React.Component {
 	componentWillMount() {
 			if (this.props.data.gameData.status.statusCode !== 'FT') {
 				if (this.props.data.liveData.decisions.winner) {
-				fetch(`http://lookup-service-prod.mlb.com/
+				fetch(`https://lookup-service-prod.mlb.com/
 				json/named.sport_pitching_tm.bam?league_list_id='mlb'&game_type='${this.props.data.gameData.game.type}'
 				&season='${this.props.data.gameData.teams.away.season}'
 				&player_id='${this.props.data.liveData.decisions.winner.id}'`)
@@ -23,7 +23,7 @@ class Decisions extends React.Component {
 			});
 			}
 			if (this.props.data.liveData.decisions.loser) {
-				fetch(`http://lookup-service-prod.mlb.com/
+				fetch(`https://lookup-service-prod.mlb.com/
 				json/named.sport_pitching_tm.bam?league_list_id='mlb'&game_type='${this.props.data.gameData.game.type}'
 				&season='${this.props.data.gameData.teams.home.season}'
 				&player_id='${this.props.data.liveData.decisions.loser.id}'`)
@@ -33,7 +33,7 @@ class Decisions extends React.Component {
 			});
 			}
 			if (this.props.data.liveData.decisions.save) {
-				fetch(`http://lookup-service-prod.mlb.com/
+				fetch(`https://lookup-service-prod.mlb.com/
 				json/named.sport_pitching_tm.bam?league_list_id='mlb'&game_type='${this.props.data.gameData.game.type}'
 				&season='${this.props.data.gameData.teams.home.season}'
 				&player_id='${this.props.data.liveData.decisions.save.id}'`)

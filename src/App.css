@@ -40,6 +40,10 @@
   justify-content: center;
 }
 
+.probable-pitcher-img {
+  width: 50vw;
+}
+
 .game-list {
   display: flex;
   flex-wrap: wrap;

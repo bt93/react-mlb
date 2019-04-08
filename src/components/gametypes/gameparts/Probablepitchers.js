@@ -11,7 +11,7 @@ class Probablepitchers extends React.Component {
 
 	componentWillMount() {
 		if (this.props.data.gameData.probablePitchers.away) {
-			fetch(`http://lookup-service-prod.mlb.com/
+			fetch(`https://lookup-service-prod.mlb.com/
 			json/named.sport_pitching_tm.bam?league_list_id='mlb'&game_type='${this.props.data.gameData.game.type}'
 			&season='${this.props.data.gameData.teams.away.season}'
 			&player_id='${this.props.data.gameData.probablePitchers.away.id}'`)
@@ -21,7 +21,7 @@ class Probablepitchers extends React.Component {
 		});
 		}
 		if (this.props.data.gameData.probablePitchers.home) {
-			fetch(`http://lookup-service-prod.mlb.com/
+			fetch(`https://lookup-service-prod.mlb.com/
 			json/named.sport_pitching_tm.bam?league_list_id='mlb'&game_type='${this.props.data.gameData.game.type}'
 			&season='${this.props.data.gameData.teams.home.season}'
 			&player_id='${this.props.data.gameData.probablePitchers.home.id}'`)
@@ -39,7 +39,9 @@ class Probablepitchers extends React.Component {
 			awayPitcher = (
 				<div className="away-pitcher">
 					<img src={`https://securea.mlb.com/images/players/525x330/alt/${this.props.data.gameData.probablePitchers.away.id}.jpg`} 
-					alt={this.props.data.gameData.probablePitchers.away.fullName}/>
+					alt={this.props.data.gameData.probablePitchers.away.fullName}
+					className="probable-pitcher-img"
+					/>
 					<p>{this.props.data.gameData.teams.away.abbreviation} - {this.props.data.gameData.probablePitchers.away.fullName}</p>
 					{this.state.awayStats.stats && 
 					<ul>
@@ -60,7 +62,9 @@ class Probablepitchers extends React.Component {
 			homePitcher = (
 				<div className="home-pitcher">
 					<img src={`https://securea.mlb.com/images/players/525x330/alt/${this.props.data.gameData.probablePitchers.home.id}.jpg`} 
-					alt={this.props.data.gameData.probablePitchers.home.fullName}/>
+					alt={this.props.data.gameData.probablePitchers.home.fullName}
+					className="probable-pitcher-img"
+					/>
 					<p>{this.props.data.gameData.teams.home.abbreviation} - {this.props.data.gameData.probablePitchers.home.fullName}</p>
 					{this.state.homeStats.stats && 
 					<ul>

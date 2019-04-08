@@ -20,7 +20,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Router>
+        <Router basename="/react-mlb">
           <div>
             <Route exact path='/' render={(props) => <Header {...props} logo={logo} />} />
 
