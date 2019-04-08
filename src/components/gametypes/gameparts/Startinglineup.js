@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Startinglineup extends React.Component {
 	constructor() {
@@ -33,7 +34,7 @@ class Startinglineup extends React.Component {
 				awayLineup = this.state.lineups.awayPlayers.map(batter => {
 				return (
 					<tr key={batter.id}>
-						<td>{awayNum++} {batter.lastName}, {batter.useName}<b> {batter.primaryPosition.abbreviation}</b></td>
+						<td>{awayNum++} <Link to={`/player/${batter.id}`}>{batter.lastName}, {batter.useName}</Link><b> {batter.primaryPosition.abbreviation}</b></td>
 					</tr>
 					)
 				});
@@ -44,7 +45,7 @@ class Startinglineup extends React.Component {
 				homeLineup = this.state.lineups.homePlayers.map(batter => {
 				return (
 					<tr key={batter.id}>
-						<td>{homeNum++} {batter.lastName}, {batter.useName}<b> {batter.primaryPosition.abbreviation}</b></td>
+						<td>{homeNum++} <Link to={`/player/${batter.id}`}>{batter.lastName}, {batter.useName}</Link><b> {batter.primaryPosition.abbreviation}</b></td>
 					</tr>
 					)
 				});

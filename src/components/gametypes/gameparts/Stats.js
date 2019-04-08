@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Stats extends React.Component {
 	constructor() {
@@ -44,7 +45,7 @@ class Stats extends React.Component {
 			awayBattersStats = this.state.awayBatters.stats.people.map(batter => {
 				return (
 				<tr key={batter.id}>
-					<td>{batter.firstLastName}</td>
+					<td><Link to={`/player/${batter.id}`}>{batter.firstLastName}</Link></td>
 					<td>{batter.stats && batter.stats[0].splits[0].stat.avg}</td>
 					<td>{batter.stats && batter.stats[0].splits[0].stat.runs}</td>
 					<td>{batter.stats && batter.stats[0].splits[0].stat.hits}</td>
@@ -62,7 +63,7 @@ class Stats extends React.Component {
 			homeBattersStats = this.state.homeBatters.stats.people.map(batter => {
 				return (
 				<tr key={batter.id}>
-					<td>{batter.firstLastName}</td>
+					<td><Link to={`/player/${batter.id}`}>{batter.firstLastName}</Link></td>
 					<td>{batter.stats && batter.stats[0].splits[0].stat.avg}</td>
 					<td>{batter.stats && batter.stats[0].splits[0].stat.runs}</td>
 					<td>{batter.stats && batter.stats[0].splits[0].stat.hits}</td>

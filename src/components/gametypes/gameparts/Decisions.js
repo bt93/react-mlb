@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Decisions extends React.Component {
 	constructor() {
@@ -56,7 +57,7 @@ class Decisions extends React.Component {
 						<div>
 							<img src={`https://securea.mlb.com/mlb/images/players/head_shot/${this.props.data.liveData.decisions.winner.id}.jpg`} 
 							alt={this.props.data.liveData.decisions.winner.fullName}/>
-							<p>Winner: {this.props.data.liveData.decisions.winner.fullName}</p>
+							<p>Winner: <Link to={`/player/${this.props.data.liveData.decisions.winner.id}`}>{this.props.data.liveData.decisions.winner.fullName}</Link></p>
 							<ul>
 								<li>Record: ({this.state.winStats.stats.w} - {this.state.winStats.stats.l})</li>
 								<li>ERA: {this.state.winStats.stats.era}</li>
@@ -70,7 +71,7 @@ class Decisions extends React.Component {
 						<div>
 							<img src={`https://securea.mlb.com/mlb/images/players/head_shot/${this.props.data.liveData.decisions.loser.id}.jpg`} 
 							alt={this.props.data.liveData.decisions.loser.fullName}/>
-							<p>Loser: {this.props.data.liveData.decisions.loser.fullName}</p>
+							<p>Loser: <Link to={`/player/${this.props.data.liveData.decisions.loser.id}`}>{this.props.data.liveData.decisions.loser.fullName}</Link></p>
 							<ul>
 								<li>Record: ({this.state.lossStats.stats.w} - {this.state.lossStats.stats.l})</li>
 								<li>ERA: {this.state.lossStats.stats.era}</li>
@@ -84,7 +85,7 @@ class Decisions extends React.Component {
 						<div>
 							<img src={`https://securea.mlb.com/mlb/images/players/head_shot/${this.props.data.liveData.decisions.save.id}.jpg`} 
 							alt={this.props.data.liveData.decisions.save.fullName} />
-							<p>Save: {this.props.data.liveData.decisions.save.fullName}</p>
+							<p>Save: <Link to={`/player/${this.props.data.liveData.decisions.save.id}`}>{this.props.data.liveData.decisions.save.fullName}</Link></p>
 							<ul>
 								<li>Saves: {this.state.saveStats.stats.sv}</li>
 								<li>ERA: {this.state.saveStats.stats.era}</li>

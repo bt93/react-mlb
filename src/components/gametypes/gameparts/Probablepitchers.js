@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Probablepitchers extends React.Component {
 	constructor() {
@@ -42,7 +43,8 @@ class Probablepitchers extends React.Component {
 					alt={this.props.data.gameData.probablePitchers.away.fullName}
 					className="probable-pitcher-img"
 					/>
-					<p>{this.props.data.gameData.teams.away.abbreviation} - {this.props.data.gameData.probablePitchers.away.fullName}</p>
+					<p>{this.props.data.gameData.teams.away.abbreviation} - 
+					<Link to={`/player/${this.props.data.gameData.probablePitchers.away.id}`}>{this.props.data.gameData.probablePitchers.away.fullName}</Link></p>
 					{this.state.awayStats.stats && 
 					<ul>
 						<li>Record: ({this.state.awayStats.stats.w} - {this.state.awayStats.stats.l})</li>
@@ -65,7 +67,8 @@ class Probablepitchers extends React.Component {
 					alt={this.props.data.gameData.probablePitchers.home.fullName}
 					className="probable-pitcher-img"
 					/>
-					<p>{this.props.data.gameData.teams.home.abbreviation} - {this.props.data.gameData.probablePitchers.home.fullName}</p>
+					<p>{this.props.data.gameData.teams.home.abbreviation} - 
+					<Link to={`/player/${this.props.data.gameData.probablePitchers.home.id}`}>{this.props.data.gameData.probablePitchers.home.fullName}</Link></p>
 					{this.state.homeStats.stats && 
 					<ul>
 						<li>Record: ({this.state.homeStats.stats.w} - {this.state.homeStats.stats.l})</li>
