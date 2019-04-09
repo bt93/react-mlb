@@ -154,7 +154,8 @@ class Gamelist extends React.Component {
 						{renderedData}
 					</ul>
 					<p>All data and stats from <a href="https://statsapi.mlb.com/" target="_blank" rel="noopener noreferrer">https://statsapi.mlb.com/</a> 
-					<span>and <a href="http://lookup-service-prod.mlb.com" target="_blank" rel="noopener noreferrer">http://lookup-service-prod.mlb.com</a></span></p>
+					<span>and <a href="http://lookup-service-prod.mlb.com" target="_blank" rel="noopener noreferrer">http://lookup-service-prod.mlb.com</a></span>
+					Use of data is for personal and educational perposes only.</p>
 				 	<p>Copyright {year} MLB Advanced Media, L.P. Use of any content on this page acknowledges agreement to the terms posted here <span>
 				 	 <a href="http://gdx.mlb.com/components/copyright.txt" target="_blank" rel="noopener noreferrer">http://gdx.mlb.com/components/copyright.txt</a></span></p>
 				</div>
