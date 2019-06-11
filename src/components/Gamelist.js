@@ -24,12 +24,7 @@ class Gamelist extends React.Component {
 		let day = this.state.startDate.getDate();
 		let year = this.state.startDate.getFullYear();
 		let date = `${month}/${day}/${year}`;
-		let newDate = localStorage.getItem('date');
-		if (newDate !== date) {
-			date = newDate
-			this.setState({selectedDate: date})
-		}
-
+		
 		let fetchGames = () => {
 		fetch(`https://statsapi.mlb.com/api/v1/schedule/?sportId=1
 			&date=${date}`)
